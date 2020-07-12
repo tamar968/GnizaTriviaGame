@@ -1,0 +1,25 @@
+﻿body {
+    background-color: #679ae2;
+    background-image: url('../pictures/background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: FbBokertov-Regular;
+    width: 100vw;
+    height: 90vh;
+    font-size: var(--main-font-size);
+    line-height: var(--main-line-height);
+    color: var(--main-text-color);
+}
+@font-face {
+    font-family: 'FbBokertov-Regular';
+    src: url('fonts/FbBokertov-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'FbBokertov-Bold';
+    src: url('fonts/FbBokertov-Bold.otf') format('opentype');
+}
+
+h1, h2, h3, h4, h4, h5 {
+    font-family: FbBokertov-Bold;
+}

@@ -1,0 +1,95 @@
+﻿ 
+good luck!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+TODO:
+1.wrap carts in stall with div - stall position relative , carts wrapper : position relative, bottom 0   -X
+2.z-index of clouds-X
+3.alert send callback-V-there are problems 
+4. time end message
+5.show old questions on save
+6.main page includes 3 buttons:
+	settings, game, players (localStorage.getItem("mygame_players")), add navigation buttons
+7.display stalls 
+8.js copy element text to clipboard-V
+9. design players area - show cart image name and score, selected player should have animation(key-frame)
+10. setting add general setting section
+11.font-face
+12.carts images, products images 
+13.move  the picture to the body background, and border
+14.to smaller the stalls(height)
+15.כדור פורח
+16.wrapper question,true-false,button(add class)
+
+
+1.
+function ctrlA1(corp) {
+  with(corp) {}
+  if (document.all) {
+    txt = corp.createTextRange()
+    txt.execCommand("Copy")
+  } else
+    setTimeout("window.status=''", 5000)
+}
+
+<div id="sc1">hello <br> <b> world </b> </div>
+<button onclick="ctrlA1(document.getElementById('sc1') )"></button>
+
+
+2.
+function copyToClipboard(text) {
+    if (window.clipboardData) { // Internet Explorer
+        window.clipboardData.setData("Text", text);
+    } else {  
+        unsafeWindow.netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");  
+        const clipboardHelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);  
+        clipboardHelper.copyString(text);
+    }
+}
+
+3.
+function containerSelect(id) {
+  containerUnselect();
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(id);
+    range.select();
+  } else if (window.getSelection) {
+    var range = document.createRange();
+    range.selectNode(id);
+    window.getSelection().addRange(range);
+  }
+}
+<label onclick="containerSelect(this); select_all()">
+  <p>hello world</p>
+  <img src="imagepath.png">
+</label>
+
+4.
+<button onclick="copyToClip(document.getElementById('foo').innerHTML)">
+  Copy the stuff
+  </button>
+
+<div id=foo style="display:none">
+  This is some data that is not visible. 
+  You can write some JS to generate this data. 
+  It can contain rich stuff.  <b> test </b> me <i> also </i>
+  <span style="font: 12px consolas; color: green;">Hello world</span> 
+  You can use setData to put TWO COPIES into the same clipboard, 
+  one that is plain and one that is rich. 
+  That way your users can paste into either a
+  <ul>
+    <li>plain text editor</li>
+    <li>or into a rich text editor</li>
+  </ul>
+</div>
+the function
+
+function copyToClip(str) {
+  function listener(e) {
+    e.clipboardData.setData("text/html", str);
+    e.clipboardData.setData("text/plain", str);
+    e.preventDefault();
+  }
+  document.addEventListener("copy", listener);
+  document.execCommand("copy");
+  document.removeEventListener("copy", listener);
+};
